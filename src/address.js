@@ -23,6 +23,7 @@ export function getBase58CheckAddress (addressBytes) {
   var hash1 = SHA256(hash0)
   var checkSum = hash1.slice(0, 4)
   checkSum = addressBytes.concat(checkSum)
+  checkSum = Buffer.from(checkSum)
   var base58Check = bs58.encode(checkSum)
   return base58Check
 }
